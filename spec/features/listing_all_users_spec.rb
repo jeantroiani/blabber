@@ -72,7 +72,25 @@ feature 'Users can sign in into an account to post' do
 	end
 end
 
+feature 'Users can sign out from their account' do
+ 	before(:each) do
+		User.create(name:      						 "Jean",
+							  user_name: 						 "@digitalguest",
+							  email:     						 "jean@icloud.com",
+							  password:  						 "right", 
+							  password_confirmation: "right"
+							  )
+	end
 
+ 	scenario 'from home, people can sign out' do
+ 		visit('/')
+		fill_in 'username', with: "@digitalguest"
+		fill_in 'password',	with: "right"
+		click_button("Submit")
+ 		click_button("Sign out")
+ 		expect(page).to have_content "See you soon"
+ 	end
+end
 
 
 

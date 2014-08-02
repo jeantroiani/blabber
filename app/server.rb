@@ -59,6 +59,13 @@ post '/' do
 	end 
 end
 
+post '/sign_out' do
+	session[:user] = params[:sign_out]
+	flash[:notice] = "See you soon!"
+	redirect ('/')
+end
+
+
 def user_of_session
 	User.first(id: session[:user]) if session[:user]
 end
