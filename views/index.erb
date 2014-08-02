@@ -1,0 +1,11 @@
+
+<a href="/sign_up">Sign up</a>
+
+
+<% @posts.each do |post| %>
+<article><%=post.text%>,<%=post.user.user_name%></article>
+<%end%>
+
+
+
+ 
