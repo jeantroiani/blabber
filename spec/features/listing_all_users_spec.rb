@@ -92,6 +92,27 @@ feature 'Users can sign out from their account' do
  	end
 end
 
+feature 'Users can post in the wall' do
+ 	before(:each) do
+		User.create(name:      						 "Jean",
+							  user_name: 						 "@digitalguest",
+							  email:     						 "jean@icloud.com",
+							  password:  						 "right", 
+							  password_confirmation: "right"
+							  )
+	end
+
+ 	scenario 'users can post if their are signed' do
+ 		visit('/')
+		fill_in 'username', with: "@digitalguest"
+		fill_in 'password',	with: "right"
+		click_button("Submit")
+		fill_in 'post', with: "I am enjoying this tune"
+		click_button("Post")
+ 		expect(page).to have_content("I am enjoying this tune,@digitalguest")
+ 	end
+end
+
 
 
 

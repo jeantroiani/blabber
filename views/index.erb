@@ -15,7 +15,7 @@
 	<%= flash[:notice]%>
 <%end%>
 
-
+<fieldset>
 	<div id="sign_in">
 		<h2>Sign in</h2>
 		<form action="/" method="POST">
@@ -24,9 +24,16 @@
 				<input type="submit" name="Submit" value="Submit">
 		</form>
 	</div><!--end of sign in-->
-
+</fieldset>
 	<a href="/sign_up">Sign up</a>
 
+
+<div id="post_it">
+	<form action="/post_it" method="POST">
+		<input type="text" name="post">
+		<input type="submit" name="Post" value="Post">
+	</form>
+</div><!--post it-->
 
 
 <div id="post">

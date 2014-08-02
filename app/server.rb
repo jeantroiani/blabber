@@ -47,22 +47,29 @@ post '/sign_up' do
 end
 
 post '/' do
-	username = params[:username]
-	password = params[:password]
+	username= params[:username]
+	password= params[:password]
 	@user = User.authenticate(username,password) 
 	if @user
-		session[:user]=@user.id
+		session[:user]= @user.id
 		redirect ('/')
 	else
-		flash[:errors]=@user.errors.full_messages
+		flash[:errors]= @user.errors.full_messages
 		redirect ('/')
 	end 
 end
 
 post '/sign_out' do
-	session[:user] = params[:sign_out]
-	flash[:notice] = "See you soon!"
+	session[:user]= params[:sign_out]
+	flash[:notice]= "See you soon!"
 	redirect ('/')
+end
+
+post '/post_it' do
+	user = User.first(id: session[:user])
+	Post.create(text: params[:post],
+		user_id: user.id)
+	redirect('/')
 end
 
 
