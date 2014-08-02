@@ -28,6 +28,7 @@ get '/sign_up' do
 	erb :sign_up
 end
 
+
 post '/sign_up' do
 	@user=	User.create(name: 					       params[:name],
 											user_name: 			       params[:username],
@@ -36,11 +37,30 @@ post '/sign_up' do
 											password_confirmation: params[:password_confirmation]
 										 )
 	if @user.save
+		session[:user]=@user.id
 		redirect ('/')
+
 	else
 		flash[:errors]=@user.errors.full_messages
 		redirect ('/sign_up')
 	end
+end
+
+post '/' do
+	username = params[:username]
+	password = params[:password]
+	@user = User.authenticate(username,password) 
+	if @user
+		session[:user]=@user.id
+		redirect ('/')
+	else
+		flash[:errors]=@user.errors.full_messages
+		redirect ('/')
+	end 
+end
+
+def user_of_session
+	User.first(id: session[:user]) if session[:user]
 end
 
 

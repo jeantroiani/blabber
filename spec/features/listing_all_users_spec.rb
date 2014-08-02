@@ -6,21 +6,24 @@ feature 'Visitors and users can see posts' do
 	before(:each) do
 		user = User.create(name:      "Jean",
 											 user_name: "@digitalguest",
-											 email:     "jean@icloud.com")
+											 email:     "jean@icloud.com",
+											 password:  						"right", 
+											 password_confirmation: "right"
+											 )
 	
 		Post.create(text:	   "I am enjoying this tune",
 								user_id: user.id
 								)		
 	end
 		
-	scenario 'When opening the homepage' do	
+	scenario 'when opening the homepage' do	
 		visit('/')
 		expect(page).to have_content("I am enjoying this tune,@digitalguest")
 	end
 
 end
 
-feature 'Users have account to post' do
+feature 'Users can open account to post' do
 	
 	scenario 'When in the homepage you can open your account' do
 		visit('/sign_up')
@@ -34,7 +37,7 @@ feature 'Users have account to post' do
 		visit ('/')
 	end
 
-	scenario 'When in the homepage you can open your account' do
+	scenario 'When in the homepage you cannot open your account if you type a wrong password' do
 		visit('/sign_up')
 		fill_in 'name', 								 with: "Jean"
 		fill_in	'username',							 with: "@digitalguest"
@@ -46,9 +49,31 @@ feature 'Users have account to post' do
 		visit('/sign_up')
 	end
 
-
-
 end
+
+feature 'Users can sign in into an account to post' do
+
+	before(:each) do
+		User.create(name:      						 "Jean",
+							  user_name: 						 "@digitalguest",
+							  email:     						 "jean@icloud.com",
+							  password:  						 "right", 
+							  password_confirmation: "right"
+							  )
+	end
+
+	scenario 'When in the homepage you can sign in if you have an account' do
+		visit('/')
+		fill_in 'username', with: "@digitalguest"
+		fill_in 'password',	with: "right"
+		click_button("Submit")
+		expect(page).to have_content "Welcome @digitalguest"
+		
+	end
+end
+
+
+
 
 
 
