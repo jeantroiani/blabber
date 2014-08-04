@@ -9,8 +9,8 @@ class User
 
 	property :id,	Serial
 	property :name, String
-	property :user_name, String
-	property :email, String
+	property :user_name, String,:unique => true
+	property :email, String,:unique => true
 	property :password_digest, Text
 	property :password_token, String
 	property :password_token_time, String
@@ -18,6 +18,8 @@ class User
 	has n, :posts
 
 	validates_confirmation_of :password
+	validates_uniqueness_of :email
+	validates_uniqueness_of :user_name
 
 	def password=(password)
 		@password=password

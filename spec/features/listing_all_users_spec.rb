@@ -4,21 +4,22 @@ require 'spec_helper'
 feature 'Visitors and users can see posts' do
 	
 	before(:each) do
-		user = User.create(name:      "Jean",
-											 user_name: "@digitalguest",
-											 email:     "jean@icloud.com",
+		user = User.create(name:      						"Jean",
+											 user_name: 						"@digitalguest",
+											 email:     						"jean@icloud.com",
 											 password:  						"right", 
 											 password_confirmation: "right"
 											 )
+		
 	
 		Post.create(text:	   "I am enjoying this tune",
 								user_id: user.id
-								)		
+								)				
 	end
 		
 	scenario 'when opening the homepage' do	
 		visit('/')
-		expect(page).to have_content("I am enjoying this tune,@digitalguest")
+		expect(page).to have_content("I am enjoying this tune, @digitalguest")
 	end
 
 end
@@ -66,7 +67,7 @@ feature 'Users can sign in into an account to post' do
 		visit('/')
 		fill_in 'username', with: "@digitalguest"
 		fill_in 'password',	with: "right"
-		click_button("Submit")
+		click_button("Sign in")
 		expect(page).to have_content "Welcome @digitalguest"
 		
 	end
@@ -86,7 +87,7 @@ feature 'Users can sign out from their account' do
  		visit('/')
 		fill_in 'username', with: "@digitalguest"
 		fill_in 'password',	with: "right"
-		click_button("Submit")
+		click_button("Sign in")
  		click_button("Sign out")
  		expect(page).to have_content "See you soon"
  	end
@@ -106,15 +107,45 @@ feature 'Users can post in the wall' do
  		visit('/')
 		fill_in 'username', with: "@digitalguest"
 		fill_in 'password',	with: "right"
-		click_button("Submit")
+		click_button("Sign in")
 		fill_in 'post', with: "I am enjoying this tune"
 		click_button("Post")
- 		expect(page).to have_content("I am enjoying this tune,@digitalguest")
+ 		expect(page).to have_content("I am enjoying this tune, @digitalguest")
  	end
 end
 
+feature 'Visitors and users can see posts' do
 
+	user = User.create(name:      						"Jean",
+										 user_name: 						"@digitalguest",
+										 email:     						"jean@icloud.com",
+										 password:  						"right", 
+										 password_confirmation: "right"
+										 )
 
+	user = User.create(name:      						"Maria",
+										 user_name: 						"@mariaromero",
+										 email:     						"maria@icloud.com",
+										 password:  						"right", 
+										 password_confirmation: "right"
+										 )
 
+	Post.create(text:	   "I am enjoying this tune",
+							user_id: "@digitalguest"
+						 )		
 
+	Post.create(text:	   "Watching Casablanca",
+							user_id: "@mariaromero"
+						 )		
+
+	scenario 'when clicking on a user name I only see his posts' do
+			visit('/')
+			expect(page).to have_content("I am enjoying this tune, @digitalguest")
+			click_link("@digitalguest")
+			expect(page).to have_content("I am enjoying this tune, @digitalguest")
+			expect(page).to_not have_content("Watching Casablanca, @mariaromero")
+
+	end
+
+end
 		

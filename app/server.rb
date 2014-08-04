@@ -69,9 +69,14 @@ post '/post_it' do
 	user = User.first(id: session[:user])
 	Post.create(text: params[:post],
 		user_id: user.id)
-	redirect('/')
+	redirect ('/')
 end
 
+get '/user_info/:user' do
+	user = User.first(user_name: params[:user])
+ 	@posts = Post.all(user_id: user.id)
+ 	erb :user_info
+end
 
 def user_of_session
 	User.first(id: session[:user]) if session[:user]

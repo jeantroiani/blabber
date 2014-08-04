@@ -1,0 +1,91 @@
+body {
+	background-image:url('../images/london.jpg');
+	background-color: ;
+}
+
+#post article{
+	font-family: helvetica;
+	color:#373941;
+	width:600px;
+	min-height:40px;
+	/*background-color: rgba(244,90,139,0.7);*/
+	background-image: linear-gradient(rgba(244,232,209,0.1),
+    rgba(245,232,209,0.9));	
+	margin: 8px auto;
+	border-radius: 6px;
+	padding: 10px;
+	box-shadow: 2px 2px 5px #104966;
+	position: relative;
+	top:60px;
+}
+
+
+
+#sign_out{
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 2;
+}
+
+#post_it{
+	position: fixed;
+	top: 320px;
+}
+
+#sign_in{
+	padding: 8px; 
+	width: 180px;
+	border-radius: 6px;
+	background-color:rgba(245,232,209,0.8);
+	position: fixed;
+	top:150px;
+	right: 40px;
+}
+
+
+
+#sign_in button{
+	color:#373941;
+	border-radius: 6px;
+}
+	
+
+#header{
+	background-color:rgb(0,0,0);
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	top:0px;
+	z-index:2;
+}
+#header h2{
+	font-size: 2.4em;
+	color: white;
+	width: 100%;
+	position: relative;
+	top:0px;
+	left: 30px;
+}
+
+
+.user_post{
+	font-family: times;
+	color: #104966;
+	position: absolute;
+	bottom:5px;
+	right:10px;
+}
+
+#flash_notice{
+	font-size: 30px;
+	text-align: center;
+}
+
+fieldset {
+    border: 0;
+}
+
+legend{
+	display: none;
+}

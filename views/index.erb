@@ -4,29 +4,32 @@
 <%end%>
 
 
-
 <div id="sign_out">
 	<form method="POST" action="/sign_out">
 		<button name= "sign_out"value="nil">Sign out</button>
 	</form>
 </div><!--end of sign out-->
 
-<%if flash[:notice] %>
-	<%= flash[:notice]%>
-<%end%>
 
+<div id="sign_in">
 <fieldset>
-	<div id="sign_in">
+	<legend>Sign in</legend>
 		<h2>Sign in</h2>
 		<form action="/" method="POST">
-				Username:<input type="text" 		name="username"> <br>
+				Username:<input type="text" 		name="username"><br>
 				Password:<input type="password" name="password"> <br>
-				<input type="submit" name="Submit" value="Submit">
+				<input type="submit" name="Submit" value="Sign in">
 		</form>
-	</div><!--end of sign in-->
 </fieldset>
-	<a href="/sign_up">Sign up</a>
+</div><!--end of sign in-->
 
+<a href="/sign_up">Sign up</a>
+
+<div id=flash_notice>
+	<%if flash[:notice] %>
+		<%= flash[:notice]%>
+	<%end%>
+</div><!--end of flash notice-->
 
 <div id="post_it">
 	<form action="/post_it" method="POST">
@@ -37,8 +40,13 @@
 
 
 <div id="post">
-	<% @posts.each do |post| %>
-	<article><%=post.text%>,<%=post.user.user_name%></article>
+	<% @posts.reverse.each do |post| %>
+	<article><%=post.text%>,
+		<spam class="user_post">
+			<a href="/user_info/<%=post.user.user_name%>"><%=post.user.user_name%>
+			</a>
+		</spam>
+	</article>
 	<%end%>
 </div><!--end of post-->
 
