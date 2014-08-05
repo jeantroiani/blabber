@@ -30,11 +30,11 @@ end
 
 
 post '/sign_up' do
-	@user=	User.create(name: 					       params[:name],
-											user_name: 			       params[:username],
-											email: 					       params[:email],
-											password: 			 			 params[:password],
-											password_confirmation: params[:password_confirmation]
+	@user=	User.create(name: 					       		 params[:name],
+											user_name: 			       "@"+params[:username],
+											email: 					       		 params[:email],
+											password: 			 			 		 params[:password],
+											password_confirmation: 		 params[:password_confirmation]
 										 )
 	if @user.save
 		session[:user]=@user.id
