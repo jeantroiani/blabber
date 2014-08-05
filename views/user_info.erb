@@ -1,0 +1,10 @@
+<div id="post">
+	<% @posts.reverse.each do |post| %>
+	<article><%=post.text%>,
+		<spam class="user_post">
+			<a href="/user_info/<%=post.user.user_name%>"><%=post.user.user_name%>
+			</a>
+		</spam>
+	</article>
+	<%end%>
+</div><!--end of post-->

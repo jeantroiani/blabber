@@ -1,6 +1,6 @@
 body {
-	background-image: linear-gradient(rgba(244,232,209,0.1),
-   rgba(245,232,209,0.9));
+	background: linear-gradient(rgba(244,232,209,0.1),
+   rgba(245,232,209,0.9)) no-repeat;
 	height:800px;
 }
 
@@ -93,6 +93,13 @@ body {
 #flash_notice{
 	font-size: 30px;
 	text-align: center;
+}
+#welcome{
+	font: red;	
+	position: relative;
+	top:120px;
+	right:-1060px;
+
 }
 
 fieldset {

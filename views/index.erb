@@ -1,8 +1,9 @@
 
-<%if user_of_session %>
-	<h2>Welcome <%= user_of_session.user_name %></h2>
-<%end%>
-
+<div id="welcome">
+	<%if user_of_session %>
+		<h2>Welcome <%= user_of_session.user_name %></h2>
+	<%end%>
+</div>
 
 <div id="sign_out">
 	<form method="POST" action="/sign_out">
