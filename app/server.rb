@@ -50,11 +50,12 @@ post '/' do
 	username= params[:username]
 	password= params[:password]
 	@user = User.authenticate(username,password) 
+
 	if @user
 		session[:user]= @user.id
 		redirect ('/')
 	else
-		flash[:errors]= @user.errors.full_messages
+		flash[:errors]="Password or email invalid"
 		redirect ('/')
 	end 
 end

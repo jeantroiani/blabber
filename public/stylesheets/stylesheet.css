@@ -1,6 +1,5 @@
 body {
-	background: linear-gradient(rgba(244,232,209,0.1),
-   rgba(245,232,209,0.9)) no-repeat;
+	background:lightblue;
 	height:800px;
 }
 
@@ -9,9 +8,8 @@ body {
 	color:#373941;
 	width:600px;
 	min-height:40px;
-	/*background-color: rgba(244,90,139,0.7);*/
 	background-image: linear-gradient(rgba(244,232,209,0.1),
-    rgba(245,232,209,0.9));	
+  rgba(245,232,209,0.9));	
 	margin: 8px auto;
 	border-radius: 6px;
 	padding: 10px;
@@ -20,11 +18,27 @@ body {
 	top:60px;
 }
 
+#sign_up a{
+	font-family: helvetica;
+	color: white;
+	text-decoration: none;
+	position: absolute;
+	right: 80px;
+	top: 06px;
+
+}
+
 #sign_up{
 	position: fixed;
-	top:300px;
+	top:190px;
 	right: 40px;
+	background-color:#923636;
+	width: 215px;
+	height: 29px;
+	border-radius: 6px;
+
 }
+
 #sign_up_box{
 	background-color:rgba(245,232,209,0.8);
 	width: 300px;
@@ -34,38 +48,62 @@ body {
 	top:200px;
 }
 
-#sign_out{
-	position: fixed;
-	top: 20px;
-	right: 20px;
-	z-index: 2;
+#flash_errors{
+	font-size:16px;
+	color: #923636; 
+	position: absolute;
+	top:65px;
+	right:45px;
+	width: 190px;
+	padding: 3px;
+	border-radius: 4px;
+	text-align: center;
 }
 
-#post_it{
+#sign_out button{
+	font-family: helvetica;
+	font-size: 18px;
+	color: white;
 	position: fixed;
-	top: 320px;
+	top:190px;
+	right: 40px;
+	background-color:#923636;
+	width: 215px;
+	height: 29px;
+	border-radius: 6px;
+	border: none;
 }
+
 
 #sign_in{
+	color: white;
 	padding: 8px; 
-	width: 180px;
+	width: 200px;
+	height: 80px;
 	border-radius: 6px;
-	background-color:rgba(245,232,209,0.8);
+	background-color:#F26363;
 	position: fixed;
-	top:150px;
+	top:90px;
 	right: 40px;
 }
 
-
-
-#sign_in button{
-	color:#373941;
+#sign_in button {
+	font-family: helvetica;
+	font-size: 18px;
+	color: white;
+	position: relative;
+	top: 8px;
+	right: 2px;
+	background-color:#D43838;
+	width: 205px;
+	height: 29px;
 	border-radius: 6px;
+	border: none;
 }
 	
 
 #header{
-	background-color:rgb(0,0,0);
+	background-color:#923636;
 	height: 60px;
 	width: 100%;
 	position: fixed;
@@ -90,15 +128,24 @@ body {
 	right:10px;
 }
 
-#flash_notice{
-	font-size: 30px;
-	text-align: center;
+#flash_notice {
+font-size: 2.5em;
+	color: white;	
+	position: fixed;
+	top:10px;
+ right: 40px;
+	z-index: 3;
+	text-align: right;
 }
+
 #welcome{
-	font: red;	
-	position: relative;
-	top:120px;
-	right:-1060px;
+	font-size: 2.5em;
+	color: white;	
+	position: fixed;
+	top:10px;
+right: 40px;
+	z-index: 3;
+	text-align: right;
 
 }
 
@@ -108,4 +155,33 @@ fieldset {
 
 legend{
 	display: none;
+}
+
+a{
+	color:#923636;
+	text-decoration: none;
+}
+
+#post_it button{
+font-family: helvetica;
+	font-size: 18px;
+	color: white;
+	position: relative;
+	top: 8px;
+	right: -1px;
+	background-color:#D43838;
+	width: 215px;
+	height: 29px;
+	border-radius: 6px;
+	border: none;
+
+}
+#post_it{
+	position: fixed;
+	top: 105px;
+	right:40px;
+}
+
+#post_it input{
+height: 20px;
 }

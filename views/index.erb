@@ -5,41 +5,55 @@
 	<%end%>
 </div>
 
+<%if user_of_session != nil %>
 <div id="sign_out">
 	<form method="POST" action="/sign_out">
 		<button name= "sign_out"value="nil">Sign out</button>
 	</form>
 </div><!--end of sign out-->
+	<%end%>
 
 
+<%if user_of_session == nil %>
 <div id="sign_in">
 <fieldset>
 	<legend>Sign in</legend>
-		<h2>Sign in</h2>
 		<form action="/" method="POST">
 				Username:<input type="text" 		name="username"><br>
 				Password:<input type="password" name="password"> <br>
-				<input type="submit" name="Submit" value="Sign in">
+				<button type="submit" name="Submit" value="Sign in">Sign in</button>
 		</form>
 </fieldset>
 </div><!--end of sign in-->
+	<%end%>
 
+<%if user_of_session == nil %>
 <div id=sign_up>
 <a href="/sign_up">Sign up</a>
 </div>
+	<%end%>
+
+
 <div id=flash_notice>
 	<%if flash[:notice] %>
 		<%= flash[:notice]%>
 	<%end%>
 </div><!--end of flash notice-->
 
-<div id="post_it">
-	<form action="/post_it" method="POST">
-		<input type="text" name="post">
-		<input type="submit" name="Post" value="Post">
-	</form>
-</div><!--post it-->
+<div id=flash_errors>
+	<%if flash[:errors] %>
+		<%= flash[:errors]%>
+	<%end%>
+</div><!--end of flash notice-->
 
+<%if user_of_session != nil %>
+ <div id="post_it">
+		<form action="/post_it" method="POST">
+			<input type="text" name="post" size="38";><br>
+			<button type="submit" name="Post" value="Post">Post</button>
+		</form>
+	</div><!--post it-->
+<%end%>
 
 <div id="post">
 	<% @posts.reverse.each do |post| %>
