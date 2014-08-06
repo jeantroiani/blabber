@@ -49,15 +49,17 @@ body {
 }
 
 #flash_errors{
+	font-family: arial;
 	font-size:16px;
 	color: #923636; 
 	position: absolute;
 	top:65px;
-	right:45px;
-	width: 190px;
+	right:40px;
+	width: 210px;
 	padding: 3px;
 	border-radius: 4px;
 	text-align: center;
+	background-color:rgba(245,232,209,0.8);
 }
 
 #sign_out button{

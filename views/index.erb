@@ -28,23 +28,24 @@
 	<%end%>
 
 <%if user_of_session == nil %>
-<div id=sign_up>
+<div id="sign_up">
 <a href="/sign_up">Sign up</a>
 </div>
 	<%end%>
 
 
-<div id=flash_notice>
+<div id="flash_notice">
 	<%if flash[:notice] %>
 		<%= flash[:notice]%>
 	<%end%>
 </div><!--end of flash notice-->
 
-<div id=flash_errors>
-	<%if flash[:errors] %>
-		<%= flash[:errors]%>
-	<%end%>
-</div><!--end of flash notice-->
+<% if flash[:errors] %>
+	<div id="flash_errors">
+			<%= flash[:errors]%>
+	</div><!--end of flash notice-->
+<% end %>
+
 
 <%if user_of_session != nil %>
  <div id="post_it">
